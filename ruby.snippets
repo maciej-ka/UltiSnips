@@ -1,0 +1,15 @@
+snippet test
+test '$1' do
+	$2
+end
+endsnippet
+
+snippet test_case
+require 'test_helper.rb'
+
+class $1Test < ActiveSupport::TestCase
+	test '$2' do
+		$0
+	end
+end
+endsnippet

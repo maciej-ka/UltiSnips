@@ -1,0 +1,154 @@
+snippet jpa-repository
+public interface NewsRepository extends JpaRepository<News, Long> {
+}
+endsnippet
+
+snippet hibernate-entity
+@Entity
+@Table(name = "T_CATEGORY")
+@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+public class Category {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long id;
+
+	@Column(name = "name")
+		private String name;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "target")
+	private ProductTarget target;
+
+	@Column(name = "level")
+		private Integer level;
+
+	@Column(name = "is_visible")
+		private Boolean isVisible;
+
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+		@JoinColumn(name = "category_id")
+		private List<Category> categories;
+
+	@ManyToOne
+	private Series series;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public ProductTarget getTarget() {
+		return target;
+	}
+
+	public void setTarget(ProductTarget target) {
+		this.target = target;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
+	}
+
+	public void addCategory(Category category) {
+		if (categories == null) {
+			categories = new ArrayList<>();
+		}
+		content = CategoryContent.CATEGORY;
+		categories.add(category);
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Category category = (Category) o;
+
+		return !(id != null ? !id.equals(category.id) : category.id != null);
+
+	}
+
+	@Override
+	public int hashCode() {
+		return id != null ? id.hashCode() : 0;
+	}
+
+	@Override
+	public String toString() {
+		return "Category{" +
+			"id=" + id +
+			", name='" + name + '\'' +
+			", target=" + target +
+			", level=" + level +
+			", icon='" + icon + '\'' +
+			", content=" + content +
+			", badgeColor='" + badgeColor + '\'' +
+			", position=" + position +
+			", isVisible=" + isVisible +
+			", series=" + series +
+			'}';
+	}
+}
+endsnippet
+
+snippet spring-rest-controller
+@RestController
+@RequestMapping("/api")
+public class NewsResource {
+
+	private final Logger log = LoggerFactory.getLogger(NewsResource.class);
+
+	@Inject
+	private NewsRepository newsRepository;
+
+	@Inject
+	private NewsService newsService;
+
+	@RequestMapping(value = "/news", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public News create(@RequestBody News news) {
+		log.debug("REST request to save News: {}", news);
+		// return newsRepository.save(news);
+	}
+
+	@RequestMapping(value = "/news/page", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public Page<Category> getPage(@RequestParam int page, @RequestParam int limit, @RequestParam String order, @RequestParam(required = false) String filter) {
+		PageQuery query = new PageQuery(order, limit, page);
+		return categoryRepository.findAllProductsByPhrase(filter, query.request());
+	}
+
+	@RequestMapping(value = "/news", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public List<Category> getAll() {
+		log.debug("REST request to get all News");
+		return categoryRepository.findAll();
+	}
+
+	@RequestMapping(value = "/news/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public ResponseEntity<Category> get(@PathVariable Long id) {
+		log.debug("REST request to get Category: {}", id);
+		Category category = categoryRepository.findOne(id);
+		if (category == null) {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+		return new ResponseEntity<>(category, HttpStatus.OK);
+	}
+
+	@RequestMapping(value = "/news/{id}", method = RequestMethod.DELETE, produces = MediaType.APPLICATION_JSON_VALUE)
+	@Timed
+	public void delete(@PathVariable Long id) {
+		log.debug("REST request to delete Category: {}", id);
+		categoryRepository.delete(id);
+	}
+}
+endsnippet

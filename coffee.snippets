@@ -1,0 +1,18 @@
+snippet ember-route
+Dashboard.$1Route = Ember.Route.extend
+	model: ->
+		@store.findAll '$2'
+endsnippet
+
+snippet ember-model
+Dashboard.$1 = DS.Model.extend
+	$2: DS.attr 'string'
+endsnippet
+
+snippet ember-controller
+Dashboard.$1Controller = Ember.Controller.extend
+endsnippet
+
+snippet cl
+console.log $1
+endsnippet
