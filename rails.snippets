@@ -1,0 +1,13 @@
+snippet cucumber_helpers
+Given(/selenium/) do
+	Capybara.current_driver = :selenium
+end
+
+Given(/^pry$/) do
+	binding.pry
+end
+
+Given(/^sleep (\d)+$/) do
+	sleep $1
+end
+endsnippet
