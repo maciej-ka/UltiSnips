@@ -7,7 +7,8 @@ Given(/^pry$/) do
 	binding.pry
 end
 
-Given(/^sleep (\d)+$/) do
-	sleep $1
+Given(/^sleep (\d)+$/) do |seconds|
+	sleep seconds.to_i
 end
+
 endsnippet
