@@ -1,4 +1,4 @@
-snippet component "React component" b
+snippet component "React component"
 $1 = React.createClass({
 	render: function() {
 		return $0
@@ -6,3 +6,16 @@ $1 = React.createClass({
 })
 endsnippet
 
+snippet propTypes
+propTypes: {
+	data: React.PropTypes.array.isRequired$0
+},
+endsnippet
+
+snippet getInitialState
+getInitialState: function(){
+	return {
+		foo: "bar"$0
+	};
+},
+endsnippet
