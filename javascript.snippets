@@ -1,5 +1,5 @@
 snippet com "React component"
-$1 = React.createClass({
+React.createClass({
 	render: function() {
 		return $0
 	}
@@ -10,6 +10,7 @@ snippet prop
 propTypes: {
 	data: React.PropTypes.array.isRequired$0
 },
+
 endsnippet
 
 snippet init
@@ -18,4 +19,24 @@ getInitialState: function(){
 		foo: "bar"$0
 	};
 },
+
+endsnippet
+
+snippet mount
+componentDidMount: function(){
+	$0
+},
+
+endsnippet
+
+snippet f
+function(){
+	$0
+}
+endsnippet
+
+snippet o
+{
+	$0: 
+}
 endsnippet
