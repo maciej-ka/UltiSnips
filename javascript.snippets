@@ -28,6 +28,20 @@ snippet es
 // eslint-disable-next-line
 endsnippet
 
+snippet ctor
+constructor(props) {
+	super(props);
+	this.func = this.func.bind(this);
+	this.state = {
+		$0
+	};
+}
+endsnippet
+
+snippet cx
+const cx = classnames.bind(styles);
+endsnippet
+
 snippet comp
 $0
 import React, {PureComponent as Component} from 'react';
