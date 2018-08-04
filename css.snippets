@@ -1,8 +1,26 @@
 snippet flex
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	$0
+display: flex;
+justify-content: space-around;
+align-items: center;
+flex-direction: column;
+$0
 endsnippet
 
+snippet grid
+display: grid;
+grid-template-columns: 2fr 1fr;
+grid-template-rows: 3fr 1fr;
+grid-template-areas:
+	"main side"
+	"footer footer";
+grid-gap: 0.5em;
+$0
+endsnippet
+
+snippet ha "" w
+hsla(0, 0%, 0%, 0.5$0)
+endsnippet
+
+snippet h "" w
+hsl(0, 0%, 0%$0)
+endsnippet
