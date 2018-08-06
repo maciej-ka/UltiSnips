@@ -48,47 +48,6 @@ snippet cx
 const cx = classnames.bind(styles);
 endsnippet
 
-snippet comp
-$0
-import React, {PureComponent as Component} from 'react';
-import PropTypes from 'prop-types';
-import classnames from 'classnames/bind';
-
-import styles from './CCC.css';
-import './CCC.css';
-
-const cx = classnames.bind(styles);
-
-class CCC extends Component {
-	constructor(props) {
-		super(props);
-		this.FFF = this.FFF.bind(this);
-		this.state = {
-		};
-	}
-
-	FFF() {
-	}
-
-	render() {
-		return (
-			<div className={styles.wrapper}>
-			</div>
-		);
-	}
-}
-
-CCC.propTypes = {
-	PPP: PropTypes.string,
-};
-
-CCC.defaultProps = {
-	PPP: "",
-};
-
-export default CCC;
-endsnippet
-
 snippet fmess
 <FormattedMessage
 	id="$1"
