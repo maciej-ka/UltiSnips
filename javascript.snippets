@@ -1,7 +1,11 @@
 snippet d
 /**
- * $0
+ * $1
  */
+endsnippet
+
+snippet dd
+/** $0 */
 endsnippet
 
 snippet c
@@ -20,13 +24,13 @@ endsnippet
 
 snippet p
 const {
-	$0,
+	$0
 } = this.props;
 endsnippet
 
 snippet s
 const {
-	$0,
+	$1
 } = this.state;
 endsnippet
 
@@ -34,14 +38,8 @@ snippet es
 // eslint-disable-next-line
 endsnippet
 
-snippet co
-constructor(props) {
-	super(props);
-	this.func = this.func.bind(this);
-	this.state = {
-		$0
-	};
-}
+snippet cl "" w
+className={styles.$0}
 endsnippet
 
 snippet cx
@@ -53,4 +51,46 @@ snippet fmess
 	id="$1"
 	defaultMessage="$2"
 />$0
+endsnippet
+
+snippet com
+class $1 extends React.PureComponent {
+	render() {
+		return (
+			$0
+		);
+	}
+}
+endsnippet
+
+snippet b
+this.$1 = this.$1.bind(this);$0
+endsnippet
+
+snippet con
+constructor(props) {
+	super(props);
+	this.state = {
+		$0
+	};
+}
+endsnippet
+
+snippet pt
+$1.propTypes = {
+	$2: PropTypes.$3,
+};
+
+$1.defaultProps = {
+	$2: $0,
+};
+endsnippet
+
+snippet de
+describe('$1', () => {
+	it('$2', () => {
+		const actual = $0;
+		expect(actual).toBe(1);
+	});
+});
 endsnippet
