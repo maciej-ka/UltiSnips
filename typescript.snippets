@@ -8,6 +8,28 @@ snippet dd
 /** $0 */
 endsnippet
 
+snippet c
+console.log($0);
+endsnippet
+
+snippet cs
+console.log(JSON.stringify($0));
+endsnippet
+
+snippet i "" w
+() => $0
+endsnippet
+
+snippet f
+function $1($2) {
+	$0
+}
+endsnippet
+
+snippet es
+// eslint-disable-next-line
+endsnippet
+
 snippet try
 try {
 	$0
@@ -16,20 +38,12 @@ try {
 }
 endsnippet
 
-snippet c
-console.log($0);
-endsnippet
-
 snippet ra
-import * as R from 'ramda';
+import * as R from "ramda";
 endsnippet
 
 snippet m
 const $1 = ${2:()} => $0
-endsnippet
-
-snippet i "" w
-() => $0
 endsnippet
 
 snippet e
@@ -37,11 +51,7 @@ export const $1 = $0
 endsnippet
 
 snippet r
-const $1 = require('$1$0');
-endsnippet
-
-snippet es
-// eslint-disable-next-line
+const $1 = require("$1$0");
 endsnippet
 
 snippet me
@@ -71,13 +81,13 @@ snippet fm
 endsnippet
 
 snippet intl "" w
-this.props.intl.formatMessage({ id: '$0' })
+this.props.intl.formatMessage({ id: "$0" })
 endsnippet
 
 snippet com
-import React from 'react';
+import React from "react";
 
-import styles from './$1.module.css';
+import styles from "./$1.module.css";
 
 class $1 extends React.PureComponent {
 	static propTypes = {
@@ -105,10 +115,10 @@ export default $1
 endsnippet
 
 snippet fcom
-import PropTypes from 'prop-types';
-import React from 'react';
+import PropTypes from "prop-types";
+import React from "react";
 
-import styles from './$1.module.css';
+import styles from "./$1.module.css";
 
 const $1 = ({ }) => (
 	<div className={styles.wrapper}>
@@ -126,7 +136,7 @@ export default $1;
 endsnippet
 
 snippet hc
-import React, {useEffect, useState, useReducer, useMemo} from 'react';
+import React, {useEffect, useState, useReducer, useMemo} from "react";
 
 import styles from "./$1.module.css";
 
@@ -167,10 +177,10 @@ $1.defaultProps = {
 endsnippet
 
 snippet de
-describe('$1', () => {
-	it('${2:works}', () => {
-		const actual = $3;
-		expect(actual).toEqual(${4:1})$0;
+describe("$1", () => {
+	it("${2:works}", () => {
+		const actual = $0;
+		expect(actual).toEqual(1);
 	});
 });
 endsnippet

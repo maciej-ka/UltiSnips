@@ -16,16 +16,17 @@ grid-gap: 0.5em;$0
 endsnippet
 
 snippet ha "" w
-hsla(0, 0%, 0%, 0.5$0)
+hsla(0, 0%, ${1}0%, 0.5)$0
 endsnippet
 
 snippet h "" w
-hsl(0, 0%, 0%$0)
+hsl(0, 0%, ${1}0%)$0
 endsnippet
 
 snippet ani
 animation-name: appear;
 animation-duration: 0.2s;
+animation-timing-function: ease-out;
 animation-delay: 0.2s;
 animation-fill-mode: both;
 endsnippet
@@ -34,5 +35,27 @@ snippet key
 @keyframes :local(appear) {
 	from { opacity: 0; }
 	to { opacity: 1; }
+}
+endsnippet
+
+snippet media
+@media (max-width: 600px) {
+	$0
+}
+endsnippet
+
+snippet mob
+@media (max-width: 768px) {
+	:local .$1 {
+		$0
+	}
+}
+endsnippet
+
+snippet desktop
+@media (min-width: 768px) {
+	:local .$1 {
+		$0
+	}
 }
 endsnippet

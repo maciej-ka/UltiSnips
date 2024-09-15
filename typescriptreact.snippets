@@ -126,11 +126,13 @@ export default $1;
 endsnippet
 
 snippet hc
-import React, {useEffect, useState, useReducer, useMemo} from 'react';
+import React, {ReactElement, useEffect, useState, useReducer, useMemo} from 'react';
 
 import styles from "./$1.module.css";
 
-const $1 = ({}) => {
+type Props = Record<string, unknown>;
+
+const $1 = ({}: Props): ReactElement => {
 	return (
 		<div className={styles.wrapper}>
 			$0
@@ -138,13 +140,7 @@ const $1 = ({}) => {
 	)
 };
 
-$1.propTypes = {
-};
-
-$1.defaultProps = {
-};
-
-export default React.memo($1);
+export default $1;
 endsnippet
 
 snippet con
@@ -211,3 +207,6 @@ snippet pone
 $1: PropTypes.oneOfType([$0]).isRequired,
 endsnippet
 
+snippet tsi
+// @ts-nocheck
+endsnippet
