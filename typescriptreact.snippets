@@ -20,24 +20,18 @@ snippet c
 console.log($0);
 endsnippet
 
-snippet ra
-import * as R from 'ramda';
-endsnippet
-
 snippet m
 const $1 = ${2:()} => $0
 endsnippet
 
+snippet f
+function $1(${2:()}) {
+	$0
+}
+endsnippet
+
 snippet i "" w
 () => $0
-endsnippet
-
-snippet e
-export const $1 = $0
-endsnippet
-
-snippet r
-const $1 = require('$1$0');
 endsnippet
 
 snippet es
@@ -79,91 +73,36 @@ this.props.intl.formatMessage({ id: '$0' })
 endsnippet
 
 snippet com
-import React from 'react';
-
 import styles from './$1.module.css';
 
-class $1 extends React.PureComponent {
-	static propTypes = {
-	};
-
-	static defaultProps = {
-	};
-
-	constructor(props) {
-		super(props);
-		this.state = {
-		};
-	}
-
-	render() {
-		return (
-			<div className={styles.wrapper}>
-				$0
-			</div>
-		);
-	}
+type Props = {
 }
 
-export default $1
-endsnippet
-
-snippet fcom
-import PropTypes from 'prop-types';
-import React from 'react';
-
-import styles from './$1.module.css';
-
-const $1 = ({ }) => (
-	<div className={styles.wrapper}>
-		$0
-	</div>
-);
-
-$1.propTypes = {
-};
-
-$1.defaultProps = {
-};
-
-export default $1;
-endsnippet
-
-snippet hc
-import React, {ReactElement, useEffect, useState, useReducer, useMemo} from 'react';
-
-import styles from "./$1.module.css";
-
-type Props = Record<string, unknown>;
-
-const $1 = ({}: Props): ReactElement => {
+function $1({}: Props) {
 	return (
 		<div className={styles.wrapper}>
 			$0
 		</div>
 	)
-};
-
-export default $1;
-endsnippet
-
-snippet con
-constructor(props) {
-	super(props);
-	this.state = {
-		$0
-	};
 }
+
+export default $1
 endsnippet
 
-snippet pt
-$1.propTypes = {
-	$2: PropTypes.$3,
-};
+snippet wrapcom
+import styles from './$1.module.css';
 
-$1.defaultProps = {
-	$2: $0,
-};
+type Props = React.PropsWithChildren<{}>;
+
+function $1({ children }: Props) {
+	return (
+		<div>
+			{children}$0
+		</div>
+	);
+}
+
+export default $1
 endsnippet
 
 snippet de
@@ -173,44 +112,4 @@ describe('$1', () => {
 		expect(actual).toEqual(${4:1})$0;
 	});
 });
-endsnippet
-
-snippet children
-children: PropTypes.oneOfType([
-	PropTypes.string,
-	PropTypes.node,
-	PropTypes.element,
-]).isRequired,
-endsnippet
-
-snippet pb
-$0: PropTypes.bool.isRequired,
-endsnippet
-
-snippet pf
-$0: PropTypes.func.isRequired,
-endsnippet
-
-snippet po
-$0: PropTypes.object.isRequired,
-endsnippet
-
-snippet pa
-$0: PropTypes.array.isRequired,
-endsnippet
-
-snippet ps
-$0: PropTypes.string.isRequired,
-endsnippet
-
-snippet pn
-$0: PropTypes.number.isRequired,
-endsnippet
-
-snippet pone
-$1: PropTypes.oneOfType([$0]).isRequired,
-endsnippet
-
-snippet tsi
-// @ts-nocheck
 endsnippet
