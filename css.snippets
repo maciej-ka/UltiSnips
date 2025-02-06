@@ -31,30 +31,45 @@ animation-delay: 0.2s;
 animation-fill-mode: both;
 endsnippet
 
+# :local(appear)?
 snippet key
-@keyframes :local(appear) {
+@keyframes appear {
 	from { opacity: 0; }
 	to { opacity: 1; }
 }
 endsnippet
 
-snippet media
-@media (max-width: 600px) {
-	$0
-}
-endsnippet
-
+# :local $1?
 snippet mob
 @media (max-width: 768px) {
-	:local .$1 {
+	$1 {
 		$0
 	}
 }
 endsnippet
 
-snippet desktop
+# :local $1?
+snippet tab
 @media (min-width: 768px) {
-	:local .$1 {
+	$1 {
+		$0
+	}
+}
+endsnippet
+
+# :local $1?
+snippet desk
+@media (min-width: 1024px) {
+	$1 {
+		$0
+	}
+}
+endsnippet
+
+# :local $1?
+snippet dark
+@media (prefers-color-scheme: dark) {
+	$1 {
 		$0
 	}
 }
