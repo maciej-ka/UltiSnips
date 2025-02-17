@@ -74,13 +74,15 @@ endsnippet
 
 snippet com
 import styles from './$1.module.css';
+import clsx from "clsx"
 
 type Props = {
+	className?: string
 }
 
-function $1({}: Props) {
+function $1({className}: Props) {
 	return (
-		<div className={styles.wrapper}>
+		<div className={clsx(styles.wrapper, className)}>
 			$0
 		</div>
 	)
@@ -91,12 +93,15 @@ endsnippet
 
 snippet wrap
 import styles from './$1.module.css';
+import clsx from "clsx"
 
-type Props = React.PropsWithChildren<{}>;
+type Props = React.PropsWithChildren<{
+	className?: string
+}>;
 
-function $1({ children }: Props) {
+function $1({ className, children }: Props) {
 	return (
-		<div>
+		<div className={clsx(styles.wrapper, className)}>
 			{children}$0
 		</div>
 	);
